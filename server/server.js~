@@ -37,30 +37,17 @@ app.put('/lions/:id', function(req, res) {
   }
 
   var lion = _.findIndex(lions, {id: req.params.id});
-
   if (!lions[lion]) {
     res.send();
   } else {
     var updatedLion = _.assign(lions[lion], update);
-
     res.json(updatedLion);
   }
 });
 
-app.delete('/lions/:id', function(req, res) {
-   var lionDelete = _.findIndex(lions, {id: req.params.id});
-
-   if(!lions[lionDelete]){
-	res.send();
-   }
-   else{
-    var deletedIndex = _.remove(lions,{id: req.params.id});
-    res.send(deletedIndex);
-   }
-});
-
-app.set('port', (process.env.PORT || 8081));
+app.set('port', (process.env.PORT || 8080));
 
 app.listen(app.get('port'), function() {
  console.log("Node app is running at localhost:" + app.get('port'))
 });
+
